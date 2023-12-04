@@ -1,4 +1,4 @@
-package scientificcalculator;
+package SCinterface;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package scientificcalculator;
+package SCinterface;
 
 import java.net.URL;
 import java.util.ResourceBundle;
