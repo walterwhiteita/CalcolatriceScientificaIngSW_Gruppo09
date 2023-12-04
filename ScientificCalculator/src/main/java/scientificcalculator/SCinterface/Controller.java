@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import scientificcalculator.classes.ScientificCalculator;
 
 public class Controller implements Initializable {
     private final Alert a = new Alert(AlertType.NONE);

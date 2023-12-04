@@ -4,9 +4,8 @@ public class ScientificCalculator {
     private Stack stack;
     private Vars vars;
 
-    public ScientificCalculator(Stack stack, Vars vars) {
-        this.stack = stack;
-        this.vars = vars;
+    public ScientificCalculator() {
+        
     }
     
     public void execute(int input){
