@@ -1,0 +1,152 @@
+.root{
+    -fx-background-color: #F5FBFF;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 16px;
+}
+.scroll-pane {
+    -fx-background: #F5FBFF;
+    -fx-border-color: #F5FBFF;
+}
+.text-field {
+    -fx-background: #FEF7E4;
+    -fx-border-color: #FEF7E4;
+    -fx-control-inner-background:#FEF7E4;
+    -fx-highlight-fill: #F5FBFF;
+    -fx-highlight-text-fill: black;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill:lightgray;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 26px;
+}
+#ancoraInserimentoNumero{
+    -fx-background-color: #F5FBFF;
+    -fx-text-alignment: center;
+}
+#ancoraSceltaVariabile{
+    -fx-background-color: #F5FBFF;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+}
+#tastiFunzione{
+    -fx-font-size: 22px;
+}
+#variabile{
+    -fx-font-size: 22px;
+    -fx-background-color:  linear-gradient(to right bottom,#FC7D5F,#DD7E67);
+    /*-fx-background-color:#90EE90;*/
+}
+#variabile:hover{
+        -fx-background-color:  linear-gradient(to right bottom,#EF9E8A,#CF9587);
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+        -fx-text-alignment: center;
+        -fx-font-size: 24px;
+}
+#variabilej{
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    /*-fx-background-color:#90EE90;*/
+}
+#variabilej:hover{
+    -fx-background-color:  linear-gradient(to right bottom,#DED9CB,#CFCABE);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+    -fx-font-size: 24px;
+}
+.operazionistack{
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    /*-fx-background-color:#90EE90;*/
+}
+.operazionistack:hover{
+    -fx-background-color:  linear-gradient(to right bottom,#DED9CB,#CFCABE);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+    -fx-font-size: 24px;
+}
+
+.operandi{
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    /*-fx-background-color:#90EE90;*/
+}
+.operandi:hover{
+    -fx-background-color:  linear-gradient(to right bottom,#DED9CB,#CFCABE);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+    -fx-font-size: 24px;
+}
+#delete{
+   -fx-font-size: 22px;
+   -fx-background-color:  linear-gradient(to right bottom,#FC7D5F,#DD7E67);
+    /*-fx-background-color:#90EE90;*/
+}
+#delete:hover{
+    -fx-background-color:  linear-gradient(to right bottom,#EF9E8A,#CF9587);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+    -fx-font-size: 24px; 
+}
+.tastierinoNumerico{
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    -fx-font-size: 26px;
+    /*-fx-background-color:#90EE90;*/
+}
+.tastierinoNumerico:hover{
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    -fx-font-size: 28px;
+    /*-fx-background-color:#90EE90;*/
+}
+
+#invio {
+    -fx-font-size: 22px; 
+    -fx-background-color:  linear-gradient(to right bottom,#FC7D5F,#DD7E67);
+     /*-fx-background-color:#90EE90;*/
+}
+#invio:hover {
+    -fx-background-color:  linear-gradient(to right bottom,#EF9E8A,#CF9587);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-alignment: center;
+    -fx-font-size: 24px; 
+}
+.button{
+        /*-fx-background-color: linear-gradient(to right bottom,#aa4b6b,#6b6b83,#3b8d99);
+        -fx-background-color:#90EE90;*/
+        -fx-background-radius: 5,5,4;
+        -fx-background-insets: 0 0 -1 0,0,1;
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+        -fx-text-alignment: center;
+        -fx-text-fill: black;
+}
+.button:hover{
+        -fx-background-color:  linear-gradient(to right bottom,#DED9CB,#CFCABE);
+        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+        -fx-text-alignment: center;
+}
+
+.bottoniVariabile{
+        -fx-text-fill:black;
+        -fx-font-size:22px;
+        -fx-background-color:  linear-gradient(to right bottom,#FC7D5F,#DD7E67);
+        -fx-text-alignment: center;
+}
+.bottoniVariabile:hover{
+    -fx-text-fill:black;
+        -fx-text-alignment: center;
+        -fx-background-color:  linear-gradient(to right bottom,#EF9E8A,#CF9587);
+        -fx-font-size:24px;
+}
+.bottoniVariabile:onclick{
+    -fx-font-size:24px;
+    -fx-text-alignment: center;
+}
+.label{
+    -fx-alignment:CENTER_LEFT;
+    -fx-font-size:26px;
+    -fx-label-padding: 0 10px 0 10px;
+    /*-fx-border-color:black;
+    -fx-border-radius:3px;
+    -fx-border-weight:3px;*/
+    -fx-border-insets: 5px;
+    -fx-background-color:  linear-gradient(to right bottom,#FEF7E4, #EEE8D7);
+    -fx-background-radius: 3px;
+    -fx-background-insets: 5px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    
+}
