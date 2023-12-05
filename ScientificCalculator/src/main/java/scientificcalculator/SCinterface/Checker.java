@@ -1,5 +1,7 @@
 package scientificcalculator.SCinterface;
 
+import scientificcalculator.classes.Vars;
+
 public final class Checker {
     public static boolean checkInput(String input){
         return false;

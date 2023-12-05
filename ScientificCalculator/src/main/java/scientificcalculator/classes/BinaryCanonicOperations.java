@@ -12,3 +12,4 @@ public final class BinaryCanonicOperations {
     }
     public static ComplexNumber divide(ComplexNumber n1, ComplexNumber n2){
     }
+}
