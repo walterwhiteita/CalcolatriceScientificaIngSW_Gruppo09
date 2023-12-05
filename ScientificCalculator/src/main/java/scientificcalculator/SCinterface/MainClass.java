@@ -13,7 +13,6 @@ public class MainClass extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("ScientificCalculatorView.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.getIcons().add(new Image(getClass().getResource("Logo.png").toString()));
         stage.setResizable(false);
         stage.setScene(scene);
