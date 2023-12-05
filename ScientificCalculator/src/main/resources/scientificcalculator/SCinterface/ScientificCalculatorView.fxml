@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificcalculator.SCinterface.Controller">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificcalculator.SCinterface.Controller">
    <children>
       <ScrollPane fx:id="scrollStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="300.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="700.4" AnchorPane.topAnchor="0.0">
          <content>
@@ -44,21 +44,21 @@
                         <Font name="Century Gothic" size="22.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="comboBoxVariabile" layoutX="10.0" layoutY="80.0" onAction="#sceltaVariabile" prefWidth="330.0" promptText="Variabile..." />
+                  <ComboBox fx:id="comboBoxVariable" layoutX="10.0" layoutY="80.0" onAction="#selectVariable" prefWidth="330.0" promptText="Variabile..." />
                   <Text layoutX="355.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scegli l'operazione: " textAlignment="CENTER" wrappingWidth="336.0">
                      <font>
                         <Font name="Century Gothic" size="22.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="comboBoxOperazione" layoutX="360.0" layoutY="80.0" onAction="#sceltaOperazione" prefWidth="330.0" promptText="Operazione..." />
-                  <Button alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#eseguiOperazione" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
+                  <ComboBox fx:id="comboBoxOperation" layoutX="360.0" layoutY="80.0" onAction="#selectOperation" prefWidth="330.0" promptText="Operazione..." />
+                  <Button alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#executeOperation" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <font>
                         <Font name="Century Gothic" size="22.0" />
                      </font></Button>
-                  <Button layoutX="523.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#backFromVariabile" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Annulla" textAlignment="CENTER">
+                  <Button layoutX="523.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#backFromVariable" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Annulla" textAlignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -79,7 +79,7 @@
                      <children>
                         <AnchorPane prefHeight="400.0" prefWidth="350.0" GridPane.valignment="CENTER">
                            <children>
-                              <Button fx:id="variabile" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleVariabile" prefHeight="48.8" prefWidth="336.0" text="VARIABILE" textAlignment="CENTER" />
+                              <Button fx:id="variabile" layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleVariable" prefHeight="48.8" prefWidth="336.0" text="VARIABILE" textAlignment="CENTER" />
                               <GridPane fx:id="tastiFunzione" alignment="TOP_CENTER" layoutX="2.0" layoutY="54.0" prefHeight="340.0" prefWidth="345.0">
                                  <columnConstraints>
                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

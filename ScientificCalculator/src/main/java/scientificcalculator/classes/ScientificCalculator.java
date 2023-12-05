@@ -3,7 +3,9 @@ package scientificcalculator.classes;
 public class ScientificCalculator {
     private Stack stack;
     private Vars vars;
-
+    //Only for debug
+    private ComplexNumber n;
+    
     public ScientificCalculator() {
         
     }
@@ -45,7 +47,7 @@ public class ScientificCalculator {
     }
     
     private ComplexNumber formatComplexNumber(String input){
-        
+        return n;
     }
 
     public Stack getStack() {

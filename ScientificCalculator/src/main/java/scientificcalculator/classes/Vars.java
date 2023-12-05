@@ -5,7 +5,8 @@ import java.util.Map;
 public class Vars {
     private Map<Character, ComplexNumber> variables;
     private Stack stack;
-
+    //Only for debug
+    private ComplexNumber n;
     public Vars(Stack stack) {
         this.stack = stack;
     }
@@ -22,7 +23,7 @@ public class Vars {
         
     }
     public ComplexNumber getValueOf(Character variable){
-        
+        return n;
     }
     public void setValueOf(Character variable, ComplexNumber n){
         

@@ -12,13 +12,13 @@ public class ComplexNumber {
     }
     
     private double moduleCalculator(){
-        
+        return 0;
     }
     private double phaseCalculator(){
-        
+        return 0;
     }
     public String toString(){
-        
+        return "debug";
     }
 
     public double getRealPart() {
