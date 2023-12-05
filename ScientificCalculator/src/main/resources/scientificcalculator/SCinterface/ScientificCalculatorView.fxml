@@ -23,7 +23,7 @@
       </ScrollPane>
       <ScrollPane layoutX="300.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="350.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="350.4" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox fx:id="vBoxVariabile" layoutX="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="295.0" minWidth="325.0" spacing="5.0" />
+            <VBox fx:id="vBoxVariable" layoutX="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="295.0" minWidth="325.0" spacing="5.0" />
          </content>
       </ScrollPane>
       <AnchorPane layoutX="650.0" prefHeight="200.0" prefWidth="350.0" AnchorPane.bottomAnchor="400.0" AnchorPane.topAnchor="0.0">
@@ -51,7 +51,7 @@
                      </font>
                   </Text>
                   <ComboBox fx:id="comboBoxOperation" layoutX="360.0" layoutY="80.0" onAction="#selectOperation" prefWidth="330.0" promptText="Operazione..." />
-                  <Button alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#executeOperation" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
+                  <Button fx:id="buttonConferma" alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#executeOperation" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -66,7 +66,7 @@
                         <Font name="Century Gothic" size="22.0" />
                      </font></Button>
                </children></AnchorPane>
-            <AnchorPane fx:id="ancoraInserimentoNumero" prefHeight="400.0" prefWidth="700.0">
+            <AnchorPane fx:id="insertNumberAnchor" prefHeight="400.0" prefWidth="700.0">
                <children>
                   <GridPane prefHeight="400.0" prefWidth="700.0">
                      <columnConstraints>
@@ -229,7 +229,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="invio" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInvio" text="INVIO" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <Button fx:id="buttonInvio" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleInvio" text="INVIO" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>

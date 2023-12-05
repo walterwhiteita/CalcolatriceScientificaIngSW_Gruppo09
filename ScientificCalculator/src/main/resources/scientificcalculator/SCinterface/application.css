@@ -18,7 +18,7 @@
     -fx-font-family: "Century Gothic";
     -fx-font-size: 26px;
 }
-#ancoraInserimentoNumero{
+#insertNumberAnchor{
     -fx-background-color: #F5FBFF;
     -fx-text-alignment: center;
 }
@@ -94,12 +94,12 @@
     /*-fx-background-color:#90EE90;*/
 }
 
-#invio {
+#buttonInvio {
     -fx-font-size: 22px; 
     -fx-background-color:  linear-gradient(to right bottom,#FC7D5F,#DD7E67);
      /*-fx-background-color:#90EE90;*/
 }
-#invio:hover {
+#buttonInvio:hover {
     -fx-background-color:  linear-gradient(to right bottom,#EF9E8A,#CF9587);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-alignment: center;
