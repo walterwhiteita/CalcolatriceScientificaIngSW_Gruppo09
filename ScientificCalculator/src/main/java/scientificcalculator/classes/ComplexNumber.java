@@ -9,16 +9,30 @@ public class ComplexNumber {
     public ComplexNumber(double realPart, double imaginaryPart) {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
+        this.module = moduleCalculator();
+        this.phase = phaseCalculator();
     }
     
     private double moduleCalculator(){
-        return 0;
+        return Math.sqrt(Math.pow(realPart, 2) + Math.pow(imaginaryPart, 2));
     }
     private double phaseCalculator(){
-        return 0;
+        return Math.atan2(imaginaryPart,realPart);
     }
     public String toString(){
-        return "debug";
+        StringBuffer stringa = new StringBuffer("");
+        stringa.append(String.format("%.3f", realPart));
+        if(Math.signum(imaginaryPart) > 0){
+            stringa.append(" + ");
+            stringa.append(String.format("%.3f", Math.abs(imaginaryPart)));
+            stringa.append("j");
+        }
+        else if(Math.signum(imaginaryPart) < 0){
+            stringa.append(" - ");
+            stringa.append(String.format("%.3f", Math.abs(imaginaryPart)));
+            stringa.append("j");
+        }
+        return stringa.toString();
     }
 
     public double getRealPart() {
