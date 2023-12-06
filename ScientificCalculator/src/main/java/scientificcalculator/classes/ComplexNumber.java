@@ -21,16 +21,39 @@ public class ComplexNumber {
     }
     public String toString(){
         StringBuffer stringa = new StringBuffer("");
-        stringa.append(String.format("%.3f", realPart));
-        if(Math.signum(imaginaryPart) > 0){
-            stringa.append(" + ");
-            stringa.append(String.format("%.3f", Math.abs(imaginaryPart)));
-            stringa.append("j");
+        if(Math.signum(realPart) == 0 && Math.signum(imaginaryPart) == 0){
+            stringa.append("0");
+            return stringa.toString();
         }
-        else if(Math.signum(imaginaryPart) < 0){
-            stringa.append(" - ");
-            stringa.append(String.format("%.3f", Math.abs(imaginaryPart)));
-            stringa.append("j");
+        else if(Math.signum(realPart) == 0){
+            if(Math.signum(imaginaryPart) > 0){
+                stringa.append(String.format(((imaginaryPart%1 == 0) ? "%.0fj" : "%.3fj"), Math.abs(imaginaryPart)));
+            }
+            else if(Math.signum(imaginaryPart) < 0){
+                stringa.append(String.format(((imaginaryPart%1 == 0) ? "-%.0fj" : "-%.3fj"), Math.abs(imaginaryPart)));
+            }
+        }
+        else if(Math.signum(imaginaryPart) == 0){
+            if(Math.signum(realPart) > 0){
+                stringa.append(String.format(((realPart%1 == 0) ? "%.0f" : "%.3f"), Math.abs(realPart)));
+            }
+            else if(Math.signum(realPart) < 0){
+                stringa.append(String.format(((realPart%1 == 0) ? "-%.0f" : "-%.3f"), Math.abs(realPart)));
+            }
+        }
+        else{
+            if(Math.signum(realPart) > 0){
+                stringa.append(String.format(((realPart%1 == 0) ? "%.0f" : "%.3f"), Math.abs(realPart)));
+            }
+            else if(Math.signum(realPart) < 0){
+                stringa.append(String.format(((realPart%1 == 0) ? "-%.0f" : "-%.3f"), Math.abs(realPart)));
+            }
+            if(Math.signum(imaginaryPart) > 0){
+                stringa.append(String.format(((imaginaryPart%1 == 0) ? " + %.0fj" : " + %.3fj"), Math.abs(imaginaryPart)));
+            }
+            else if(Math.signum(imaginaryPart) < 0){
+                stringa.append(String.format(((imaginaryPart%1 == 0) ? " - %.0fj" : " - %.3fj"), Math.abs(imaginaryPart)));
+            }
         }
         return stringa.toString();
     }
