@@ -7,21 +7,21 @@ import scientificcalculator.exceptions.InvalidInputException;
 public final class Checker {
     public static void checkInput(String input) throws InvalidInputException{
         if(checkOperation(input)==-1 && !isANumber(input))
-            throw new InvalidInputException();
+            throw new InvalidInputException("Input errato!");
     }
     public static boolean isANumber(String input){
-        Pattern pattern = Pattern.compile("[-+]?\\d*\\.?\\d+[-+]\\d*\\.?\\d+j");
+        Pattern pattern = Pattern.compile("[+-]?\\d*\\.?\\d+[-+]\\d*\\.?\\d+j");
         // Match regex against input
         if(pattern.matcher(input).matches()){
             System.out.println("Complesso");
             return true;
         }
-        pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
+        pattern = Pattern.compile("[+-]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
             System.out.println("Reale");
             return true;
         }
-        pattern = Pattern.compile("[-+]?\\d*\\.?\\d+j");
+        pattern = Pattern.compile("[+-]?\\d*\\.?\\d+j");
         if(pattern.matcher(input).matches()){
             System.out.println("Immaginario");
             return true;
