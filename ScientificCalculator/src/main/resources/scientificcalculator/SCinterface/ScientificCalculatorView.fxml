@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificcalculator.SCinterface.Controller">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificcalculator.SCinterface.Controller">
    <children>
       <ScrollPane fx:id="scrollStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="300.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="700.4" AnchorPane.topAnchor="0.0">
          <content>
@@ -28,7 +28,7 @@
       </ScrollPane>
       <AnchorPane layoutX="650.0" prefHeight="200.0" prefWidth="350.0" AnchorPane.bottomAnchor="400.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="text" alignment="BOTTOM_RIGHT" layoutX="7.0" layoutY="134.0" onKeyPressed="#handleKeyPressed" prefHeight="26.0" prefWidth="336.0" promptText="-3.2+4.5j" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="240.0">
+            <TextField fx:id="text" alignment="BOTTOM_RIGHT" layoutX="7.0" layoutY="134.0" prefHeight="26.0" prefWidth="336.0" promptText="-3.2+4.5j" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="240.0">
                <font>
                   <Font name="Century Gothic" size="26.0" />
                </font>
