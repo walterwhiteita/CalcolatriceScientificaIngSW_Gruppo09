@@ -21,19 +21,29 @@ public class ComplexNumber {
     }
     public String toString(){
         StringBuffer stringa = new StringBuffer("");
-        if(Math.signum(realPart) == 0 && Math.signum(imaginaryPart) == 0){
+        if(realPart == 0 && imaginaryPart == 0){
             stringa.append("0");
             return stringa.toString();
         }
-        else if(Math.signum(realPart) == 0){
+        else if(realPart == 0){
             if(Math.signum(imaginaryPart) > 0){
-                stringa.append(String.format(((imaginaryPart%1 == 0) ? "%.0fj" : "%.3fj"), Math.abs(imaginaryPart)));
+                if(imaginaryPart==1){
+                    stringa.append("j");
+                }
+                else{
+                    stringa.append(String.format(((imaginaryPart%1 == 0) ? "%.0fj" : "%.3fj"), Math.abs(imaginaryPart)));                    
+                }
             }
             else if(Math.signum(imaginaryPart) < 0){
-                stringa.append(String.format(((imaginaryPart%1 == 0) ? "-%.0fj" : "-%.3fj"), Math.abs(imaginaryPart)));
+                if(imaginaryPart==-1){
+                    stringa.append("-j");
+                }
+                else{
+                    stringa.append(String.format(((imaginaryPart%1 == 0) ? "-%.0fj" : "-%.3fj"), Math.abs(imaginaryPart)));
+                }
             }
         }
-        else if(Math.signum(imaginaryPart) == 0){
+        else if(imaginaryPart == 0){
             if(Math.signum(realPart) > 0){
                 stringa.append(String.format(((realPart%1 == 0) ? "%.0f" : "%.3f"), Math.abs(realPart)));
             }
@@ -49,20 +59,30 @@ public class ComplexNumber {
                 stringa.append(String.format(((realPart%1 == 0) ? "-%.0f" : "-%.3f"), Math.abs(realPart)));
             }
             if(Math.signum(imaginaryPart) > 0){
-                stringa.append(String.format(((imaginaryPart%1 == 0) ? " + %.0fj" : " + %.3fj"), Math.abs(imaginaryPart)));
+                if(imaginaryPart == 1){
+                    stringa.append(" + j");
+                }
+                else{
+                    stringa.append(String.format(((imaginaryPart%1 == 0) ? " + %.0fj" : " + %.3fj"), Math.abs(imaginaryPart)));
+                }
             }
             else if(Math.signum(imaginaryPart) < 0){
-                stringa.append(String.format(((imaginaryPart%1 == 0) ? " - %.0fj" : " - %.3fj"), Math.abs(imaginaryPart)));
+                if(imaginaryPart == -1){
+                    stringa.append(" - j");
+                }
+                else{
+                    stringa.append(String.format(((imaginaryPart%1 == 0) ? " - %.0fj" : " - %.3fj"), Math.abs(imaginaryPart)));
+                }
             }
         }
-        return stringa.toString();
+        return stringa.toString().replace(',', '.');
     }
-
+    
     public double getRealPart() {
         return realPart;
     }
 
-    private void setRealPart(double realPart) {
+    public void setRealPart(double realPart) {
         this.realPart = realPart;
     }
 
@@ -70,7 +90,7 @@ public class ComplexNumber {
         return imaginaryPart;
     }
 
-    private void setImaginaryPart(double imaginaryPart) {
+    public void setImaginaryPart(double imaginaryPart) {
         this.imaginaryPart = imaginaryPart;
     }
 
@@ -78,7 +98,7 @@ public class ComplexNumber {
         return module;
     }
 
-    private void setModule(double module) {
+    public void setModule(double module) {
         this.module = module;
     }
 
@@ -86,7 +106,7 @@ public class ComplexNumber {
         return phase;
     }
 
-    private void setPhase(double phase) {
+    public void setPhase(double phase) {
         this.phase = phase;
     }
     
