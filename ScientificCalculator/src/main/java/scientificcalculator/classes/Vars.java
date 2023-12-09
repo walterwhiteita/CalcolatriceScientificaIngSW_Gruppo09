@@ -56,7 +56,6 @@ public class Vars {
         
         ComplexNumber num1 = this.stack.pop();
         ComplexNumber num2 = this.variables.remove(variable);
-        
         this.setValueOf(variable, BinaryCanonicOperations.sum(num2, num1));
     }
     
@@ -113,7 +112,7 @@ public class Vars {
         for(Entry<Character, ComplexNumber> element : this.variables.entrySet()){
             StringBuffer sb = new StringBuffer();
             sb.append(element.getKey().toString());
-            sb.append("= ");
+            sb.append(" = ");
             sb.append(element.getValue().toString());
             out.add(sb.toString());
             out.sort(null);

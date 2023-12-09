@@ -16,12 +16,12 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="700.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificcalculator.SCinterface.Controller">
    <children>
-      <ScrollPane fx:id="scrollStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="300.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="700.4" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="scrollStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="300.0" prefHeight="700.0" prefWidth="300.0" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="vBoxStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="695.0" minWidth="275.0" prefHeight="695.0" prefWidth="275.0" spacing="5.0" />
+            <VBox fx:id="vBoxStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="695.0" minWidth="275.0" spacing="5.0" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="300.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="350.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="350.4" AnchorPane.topAnchor="0.0">
+      <ScrollPane layoutX="300.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="350.0" prefHeight="300.0" prefWidth="350.0" vbarPolicy="ALWAYS">
          <content>
             <VBox fx:id="vBoxVariable" layoutX="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="295.0" minWidth="325.0" spacing="5.0" />
          </content>

@@ -3,6 +3,7 @@ package scientificcalculator.classes;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
+import scientificcalculator.exceptions.InvalidOperandsException;
 
 public class Stack {
 
@@ -21,33 +22,32 @@ public class Stack {
     public ComplexNumber pop() {
         ComplexNumber c = null;
         try{
-            c = stack.peekFirst();stack.removeFirst();
+            c = stack.removeFirst();
         }catch(NoSuchElementException ex){
-            System.out.println("Stack vuoto gay!");
+            throw new InvalidOperandsException("Numero di operandi insufficiente");
         }
         return c;
     }
 
     public ComplexNumber top() {
-        ComplexNumber c = null;
-        try{
-            c = stack.peekFirst();
-        }catch(NoSuchElementException ex){
-            System.out.println("Stack vuoto gay!");
-        }
+        ComplexNumber c = stack.peekFirst();
+        if(c == null)
+            throw new InvalidOperandsException("Numero di operandi insufficiente");
         return c;
     }
 
     public void clear() {
         stack.clear();
-
     }
 
-    public void drop() {
+    public void drop() throws InvalidOperandsException {
         this.pop();
     }
 
-    public void swap() {
+    public void swap() throws InvalidOperandsException {
+        if(stack.size()<2){
+            throw new InvalidOperandsException("Numero di operandi insufficiente!");
+        }
         ComplexNumber last = this.pop();
         ComplexNumber beforeLast = this.pop();
         this.push(last);
@@ -55,13 +55,16 @@ public class Stack {
 
     }
 
-    public void duplicate() {
+    public void duplicate() throws InvalidOperandsException {
         ComplexNumber last = this.top();
         stack.push(last);
 
     }
 
-    public void over() {
+    public void over() throws InvalidOperandsException {
+        if(stack.size()<2){
+            throw new InvalidOperandsException("Numero di operandi insufficiente!");
+        }
         ComplexNumber last = this.pop();
         ComplexNumber beforeLast = this.top();
         this.push(last);
