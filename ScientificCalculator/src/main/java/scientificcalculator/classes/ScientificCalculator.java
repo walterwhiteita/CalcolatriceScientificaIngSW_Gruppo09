@@ -13,30 +13,32 @@ public class ScientificCalculator {
         this.vars=new Vars(this.stack);
     }
   
-    public void execute(int input) throws InvalidOperandsException{
+    public void execute(int input) throws InvalidOperandsException, ArithmeticException{
         switch(input){
             case 1:
-                this.sum();
+                sum();
                 break;
             case 2:
-                this.sub();
+                sub();
                 break;
             case 3:
-                this.multiply();
+                multiply();
                 break;
             case 4:
-                this.divide();
+                divide();
+                break;
             case 5:
-                this.changeSign();
+                changeSign();
                 break;
             case 6:
-                this.squareRoot();
+                squareRoot();
                 break;
             case 11:
                 stack.clear();
                 break;
             case 12:
                 stack.drop();
+                break;
             case 13:
                 stack.swap();
                 break;
@@ -72,23 +74,50 @@ public class ScientificCalculator {
     }
     
     public void sum() throws InvalidOperandsException{
-        System.out.println("Sto facendo la somma");
-        stack.push(BinaryCanonicOperations.sum(stack.pop(),stack.pop()));
+        if(stack.getStack().size()<2){
+            throw new InvalidOperandsException("Numeri di operandi per l'addizione!");
+        }
+        ComplexNumber n2 = stack.pop();
+        ComplexNumber n1 = stack.pop();
+        stack.push(BinaryCanonicOperations.sum(n1,n2));
     }
     
     public void sub() throws InvalidOperandsException{
-        stack.push(BinaryCanonicOperations.sub(stack.pop(),stack.pop()));
+        if(stack.getStack().size()<2){
+            throw new InvalidOperandsException("Numeri di operandi per la sottrazione!");
+        }
+        ComplexNumber n2 = stack.pop();
+        ComplexNumber n1 = stack.pop();
+        stack.push(BinaryCanonicOperations.sub(n1,n2));
     }
     
     public void multiply() throws InvalidOperandsException{
-        stack.push(BinaryCanonicOperations.multiply(stack.pop(),stack.pop()));
+        if(stack.getStack().size()<2){
+            throw new InvalidOperandsException("Numeri di operandi per la moltiplicazione!");
+        }
+        ComplexNumber n2 = stack.pop();
+        ComplexNumber n1 = stack.pop();
+        stack.push(BinaryCanonicOperations.multiply(n1,n2));
     }
     
-    public void divide() throws InvalidOperandsException{
-        stack.push(BinaryCanonicOperations.divide(stack.pop(),stack.pop()));
+    public void divide() throws InvalidOperandsException,ArithmeticException{
+        if(stack.top().getModule()==0){
+            throw new ArithmeticException("Divisione per zero");
+        }
+        if(stack.getStack().size()<2){
+            throw new InvalidOperandsException("Numero di operandi insufficiente per la divisione!");
+        }
+        ComplexNumber n2 = stack.pop();
+        ComplexNumber n1 = stack.pop();
+        stack.push(BinaryCanonicOperations.divide(n1,n2));
     }
     
     public void squareRoot() throws InvalidOperandsException{
+        if(stack.top().getModule()==0){
+            stack.pop();
+            stack.push(new ComplexNumber(0,0));
+            return;
+        }
         ComplexNumber radixs[];
         radixs = UnaryCanonicOperations.squareRoot(stack.pop());
         stack.push(radixs[0]);
@@ -117,7 +146,6 @@ public class ScientificCalculator {
             return new ComplexNumber(Double.parseDouble(input),0);
         }
         input = input.replace("j","");
-        System.out.println("Immaginario");
         System.out.println(input);
         return new ComplexNumber(0,Double.parseDouble(input));
     } 

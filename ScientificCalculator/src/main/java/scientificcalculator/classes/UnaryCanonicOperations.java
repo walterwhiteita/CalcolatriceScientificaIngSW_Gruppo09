@@ -5,10 +5,6 @@ import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 
-/**
- *
- * @author angel
- */
 public final class UnaryCanonicOperations {
     public static ComplexNumber[] squareRoot(ComplexNumber n){
         ComplexNumber[] radix = new ComplexNumber[2];
