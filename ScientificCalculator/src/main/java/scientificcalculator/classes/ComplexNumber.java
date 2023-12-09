@@ -38,6 +38,8 @@ public class ComplexNumber {
         }
     }
     public String toString(){
+        double realPart = Math.round(this.realPart * 1000d) / 1000d;
+        double imaginaryPart = Math.round(this.imaginaryPart * 1000d) / 1000d;
         StringBuffer stringa = new StringBuffer("");
         if(realPart == 0 && imaginaryPart == 0){
             stringa.append("0");
