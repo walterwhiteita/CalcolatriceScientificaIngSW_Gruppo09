@@ -54,6 +54,7 @@ public class Vars {
         if(!this.variables.containsKey(variable))
             throw new UninitializedVariableException("Variabile selezionata non inizializzata!");
         
+        
         ComplexNumber num1 = this.stack.pop();
         ComplexNumber num2 = this.variables.remove(variable);
         this.setValueOf(variable, BinaryCanonicOperations.sum(num2, num1));
@@ -69,8 +70,9 @@ public class Vars {
     public void subFromStack(Character variable) throws InvalidOperandsException, UninitializedVariableException{
         if(!this.variables.containsKey(variable)) //Verifica che la chiave 'variable' sia presente nella map.
             throw new UninitializedVariableException("Variabile selezionata non inizializzata!");
+        ComplexNumber num = this.stack.pop();
         
-        this.setValueOf(variable, BinaryCanonicOperations.sub(this.variables.remove(variable), this.stack.pop()));
+        this.setValueOf(variable, BinaryCanonicOperations.sub(this.variables.remove(variable),num ));
     }
     
     /*
