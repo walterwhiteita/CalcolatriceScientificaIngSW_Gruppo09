@@ -8,7 +8,7 @@ import scientificcalculator.exceptions.UninitializedVariableException;
 import scientificcalculator.exceptions.InvalidOperandsException;
 
 public class Vars {
-    public Map<Character, ComplexNumber> variables;
+    private Map<Character, ComplexNumber> variables;
     private Stack stack;
 
     /*
@@ -116,6 +116,7 @@ public class Vars {
             sb.append("= ");
             sb.append(element.getValue().toString());
             out.add(sb.toString());
+            out.sort(null);
         }
         return out;
     }
