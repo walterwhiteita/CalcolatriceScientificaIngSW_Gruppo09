@@ -17,7 +17,25 @@ public class ComplexNumber {
         return Math.sqrt(Math.pow(realPart, 2) + Math.pow(imaginaryPart, 2));
     }
     private double phaseCalculator(){
-        return Math.atan2(imaginaryPart,realPart);
+        if(realPart==0 && Math.signum(imaginaryPart)>0){
+           return Math.PI/2;
+        }
+        else if(realPart==0 && Math.signum(imaginaryPart)<0){
+            return -(Math.PI/2);
+            
+        }
+        else if(realPart==0 && imaginaryPart==0){
+            return 0;
+        }
+        else if(Math.signum(realPart)>0){
+            return Math.atan2(imaginaryPart,realPart);
+        }
+        else if(Math.signum(realPart)<0 && Math.signum(imaginaryPart)<0){
+            return Math.atan2(imaginaryPart,realPart)-Math.PI;
+        }
+        else{
+            return Math.atan2(imaginaryPart,realPart)+Math.PI;
+        }
     }
     public String toString(){
         StringBuffer stringa = new StringBuffer("");
