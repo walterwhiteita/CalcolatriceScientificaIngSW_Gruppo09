@@ -51,7 +51,7 @@
                      </font>
                   </Text>
                   <ComboBox fx:id="comboBoxOperation" layoutX="360.0" layoutY="80.0" onAction="#selectOperation" prefWidth="330.0" promptText="Operazione..." />
-                  <Button fx:id="buttonConferma" alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#executeOperation" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
+                  <Button fx:id="buttonConferma" alignment="CENTER" layoutX="355.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#executeOperationOnVariable" prefHeight="55.0" prefWidth="150.0" styleClass="bottoniVariabile" text="Conferma" textAlignment="CENTER">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>

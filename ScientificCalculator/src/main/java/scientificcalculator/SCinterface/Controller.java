@@ -49,8 +49,8 @@ public class Controller implements Initializable {
     @FXML
     private AnchorPane insertNumberAnchor;
     private final ScientificCalculator calculator = new ScientificCalculator();
-    private Character variabile;
-    private Character operazione;
+    private Character variable;
+    private Character operation;
     
     //metodi
     @FXML
@@ -122,17 +122,17 @@ public class Controller implements Initializable {
     @FXML
     private void selectVariable(ActionEvent event) {
         ComboBox var = (ComboBox)event.getSource();
-        variabile=var.getValue().toString().charAt(1);  
+        variable=var.getValue().toString().charAt(1);  
     }
     @FXML
     private void selectOperation(ActionEvent event) {
         ComboBox op = (ComboBox)event.getSource();
-        operazione=op.getValue().toString().charAt(1);    
+        operation=op.getValue().toString().charAt(1);    
     }
     @FXML
-    private void executeOperation(ActionEvent event){
+    private void executeOperationOnVariable(ActionEvent event){
         String conferma = "OK";
-        if(isInitialized(calculator.getVars(),variabile) && operazione.equals('>')){
+        if(isInitialized(calculator.getVars(),variable) && operation.equals('>')){
             a.setAlertType(AlertType.CONFIRMATION);
             a.setTitle("Variabile inizializzata!");
             a.setContentText("Attenzione!La variabile è già inizializzata!\nSi desidera procedere con la sovrascrittura?");
@@ -142,7 +142,7 @@ public class Controller implements Initializable {
         }        
         if (conferma.equals("OK")){
             try{
-                calculator.executeOnVariable(variabile, operazione);
+                calculator.executeOnVariable(variable, operation);
                 vBoxVariableUpdate();
                 vBoxStackUpdate();
             }catch(InvalidOperandsException ex){
