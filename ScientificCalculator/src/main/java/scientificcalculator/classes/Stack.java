@@ -16,8 +16,6 @@ import scientificcalculator.exceptions.InvalidOperandsException;
 public class Stack {
 
     private Deque<ComplexNumber> stack;
-    //Only for debug
-    private ComplexNumber n;
 
     public Stack() {
         stack = new LinkedList();

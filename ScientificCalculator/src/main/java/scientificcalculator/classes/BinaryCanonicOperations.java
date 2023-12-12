@@ -8,7 +8,6 @@
 
 package scientificcalculator.classes;
 
-import static java.lang.Math.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 

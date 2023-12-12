@@ -17,8 +17,8 @@ public class ComplexNumber {
     private BigDecimal phase;
 
     public ComplexNumber(BigDecimal realPart, BigDecimal imaginaryPart) {
-        this.realPart = realPart;
-        this.imaginaryPart = imaginaryPart;
+        this.realPart = realPart.setScale(3,BigDecimal.ROUND_HALF_UP);
+        this.imaginaryPart = imaginaryPart.setScale(3,BigDecimal.ROUND_HALF_UP);
         this.module = moduleCalculator();
         this.phase = phaseCalculator();
     }
@@ -38,9 +38,6 @@ public class ComplexNumber {
     public String toString() {
         BigDecimal realPart=this.realPart;
         BigDecimal imaginaryPart=this.imaginaryPart;
-        
-        realPart = realPart.setScale(3, BigDecimal.ROUND_HALF_UP);
-        imaginaryPart = imaginaryPart.setScale(3, BigDecimal.ROUND_HALF_UP);
         
         if (realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0){
             return "0";
@@ -95,33 +92,16 @@ public class ComplexNumber {
         return realPart;
     }
 
-    public void setRealPart(BigDecimal realPart) {
-        this.realPart = realPart;
-    }
-
     public BigDecimal getImaginaryPart() {
         return imaginaryPart;
-    }
-
-    public void setImaginaryPart(BigDecimal imaginaryPart) {
-        this.imaginaryPart = imaginaryPart;
     }
 
     public BigDecimal getModule() {
         return module;
     }
 
-    public void setModule(BigDecimal module) {
-        this.module = module;
-    }
-
     public BigDecimal getPhase() {
         return phase;
     }
 
-    public void setPhase(BigDecimal phase) {
-        this.phase = phase;
-    }
-    
-    
 }

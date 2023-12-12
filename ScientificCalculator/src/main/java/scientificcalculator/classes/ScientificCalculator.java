@@ -146,21 +146,13 @@ public class ScientificCalculator {
         if(pattern.matcher(input).matches()){
             input = input.replace("j","");
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
-            BigDecimal realPart = new BigDecimal(numbers[0]);
-            realPart = realPart.setScale(3,BigDecimal.ROUND_HALF_UP);
-            BigDecimal imaginaryPart = new BigDecimal(numbers[1]);
-            imaginaryPart = imaginaryPart.setScale(3,BigDecimal.ROUND_HALF_UP);
-            return new ComplexNumber(realPart,imaginaryPart);
+            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[0]));
         }
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
-            BigDecimal realPart = new BigDecimal(input);
-            realPart = realPart.setScale(3,BigDecimal.ROUND_HALF_UP);
-            return new ComplexNumber(realPart,BigDecimal.ZERO);
+            return new ComplexNumber(new BigDecimal(input),BigDecimal.ZERO);
         }
         input = input.replace("j","");
-        BigDecimal imaginaryPart = new BigDecimal(input);
-        imaginaryPart = imaginaryPart.setScale(3,BigDecimal.ROUND_HALF_UP);
         return new ComplexNumber(BigDecimal.ZERO,new BigDecimal(input));
     } 
 
