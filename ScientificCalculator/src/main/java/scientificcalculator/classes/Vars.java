@@ -1,3 +1,11 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.classes;
 
 import java.util.ArrayList;

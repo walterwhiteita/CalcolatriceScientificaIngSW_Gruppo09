@@ -1,133 +1,127 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.classes;
 
-public class ComplexNumber {
-    private double realPart;
-    private double imaginaryPart;
-    private double module;
-    private double phase;
+import java.math.BigDecimal;
 
-    public ComplexNumber(double realPart, double imaginaryPart) {
+public class ComplexNumber {
+    private BigDecimal realPart;
+    private BigDecimal imaginaryPart;
+    private BigDecimal module;
+    private BigDecimal phase;
+
+    public ComplexNumber(BigDecimal realPart, BigDecimal imaginaryPart) {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
         this.module = moduleCalculator();
         this.phase = phaseCalculator();
     }
     
-    private double moduleCalculator(){
-        return Math.sqrt(Math.pow(realPart, 2) + Math.pow(imaginaryPart, 2));
+    private BigDecimal moduleCalculator(){
+        return BigDecimal.valueOf(Math.sqrt(Math.pow(realPart.doubleValue(), 2) + Math.pow(imaginaryPart.doubleValue(), 2)));
     }
-    private double phaseCalculator(){
-        if(realPart==0 && Math.signum(imaginaryPart)>0){
-           return Math.PI/2;
-        }
-        else if(realPart==0 && Math.signum(imaginaryPart)<0){
-            return -(Math.PI/2);
-            
-        }
-        else if(realPart==0 && imaginaryPart==0){
-            return 0;
-        }
-        else if(Math.signum(realPart)>0){
-            return Math.atan2(imaginaryPart,realPart);
-        }
-        else if(Math.signum(realPart)<0 && Math.signum(imaginaryPart)<0){
-            return Math.atan2(imaginaryPart,realPart)-Math.PI;
+    private BigDecimal phaseCalculator(){
+        if(realPart.equals(BigDecimal.ZERO) && imaginaryPart.equals(BigDecimal.ZERO)){
+            return BigDecimal.ZERO;
         }
         else{
-            return Math.atan2(imaginaryPart,realPart)+Math.PI;
+            return BigDecimal.valueOf(Math.atan2(imaginaryPart.doubleValue(),realPart.doubleValue()));
         }
     }
-    public String toString(){
-        double realPart = Math.round(this.realPart * 1000d) / 1000d;
-        double imaginaryPart = Math.round(this.imaginaryPart * 1000d) / 1000d;
-        StringBuffer stringa = new StringBuffer("");
-        if(realPart == 0 && imaginaryPart == 0){
-            stringa.append("0");
-            return stringa.toString();
+    @Override
+    public String toString() {
+        BigDecimal realPart=this.realPart;
+        BigDecimal imaginaryPart=this.imaginaryPart;
+        
+        realPart = realPart.setScale(3, BigDecimal.ROUND_HALF_EVEN);
+        imaginaryPart = imaginaryPart.setScale(3, BigDecimal.ROUND_HALF_EVEN);
+        
+        if (realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0){
+            return "0";
         }
-        else if(realPart == 0){
-            if(Math.signum(imaginaryPart) > 0){
-                if(imaginaryPart==1){
+        
+        StringBuffer stringa = new StringBuffer("");
+        if (realPart.doubleValue() != 0){
+            try{
+                stringa.append(realPart.toBigIntegerExact().toString());
+            }catch(ArithmeticException ex){
+                stringa.append(realPart.toPlainString());
+            }
+        }
+        
+        if (imaginaryPart.compareTo(BigDecimal.ZERO) > 0) {
+            if (realPart.doubleValue() != 0) {
+                stringa.append(" + ");
+            }
+            if (imaginaryPart.doubleValue() == 1) {
+                stringa.append("j");
+            } else {
+                try{
+                    stringa.append(imaginaryPart.toBigIntegerExact().toString());
+                    stringa.append("j");
+                }catch(ArithmeticException ex){
+                    stringa.append(imaginaryPart.toPlainString());
                     stringa.append("j");
                 }
-                else{
-                    stringa.append(String.format(((imaginaryPart%1 == 0) ? "%.0fj" : "%.3fj"), Math.abs(imaginaryPart)));                    
-                }
             }
-            else if(Math.signum(imaginaryPart) < 0){
-                if(imaginaryPart==-1){
-                    stringa.append("-j");
-                }
-                else{
-                    stringa.append(String.format(((imaginaryPart%1 == 0) ? "-%.0fj" : "-%.3fj"), Math.abs(imaginaryPart)));
-                }
+        } else if (imaginaryPart.compareTo(BigDecimal.ZERO) < 0) {
+            if (realPart.doubleValue() != 0) {
+                stringa.append(" - ");
+            } else {
+                stringa.append("-");
             }
-        }
-        else if(imaginaryPart == 0){
-            if(Math.signum(realPart) > 0){
-                stringa.append(String.format(((realPart%1 == 0) ? "%.0f" : "%.3f"), Math.abs(realPart)));
-            }
-            else if(Math.signum(realPart) < 0){
-                stringa.append(String.format(((realPart%1 == 0) ? "-%.0f" : "-%.3f"), Math.abs(realPart)));
-            }
-        }
-        else{
-            if(Math.signum(realPart) > 0){
-                stringa.append(String.format(((realPart%1 == 0) ? "%.0f" : "%.3f"), Math.abs(realPart)));
-            }
-            else if(Math.signum(realPart) < 0){
-                stringa.append(String.format(((realPart%1 == 0) ? "-%.0f" : "-%.3f"), Math.abs(realPart)));
-            }
-            if(Math.signum(imaginaryPart) > 0){
-                if(imaginaryPart == 1){
-                    stringa.append(" + j");
-                }
-                else{
-                    stringa.append(String.format(((imaginaryPart%1 == 0) ? " + %.0fj" : " + %.3fj"), Math.abs(imaginaryPart)));
-                }
-            }
-            else if(Math.signum(imaginaryPart) < 0){
-                if(imaginaryPart == -1){
-                    stringa.append(" - j");
-                }
-                else{
-                    stringa.append(String.format(((imaginaryPart%1 == 0) ? " - %.0fj" : " - %.3fj"), Math.abs(imaginaryPart)));
+            if (imaginaryPart.doubleValue() == -1) {
+                stringa.append("j");
+            } else {
+                try {
+                    stringa.append(imaginaryPart.negate().toBigIntegerExact().toString());
+                    stringa.append("j");
+                } catch (ArithmeticException ex) {
+                    stringa.append(imaginaryPart.negate().toPlainString());
+                    stringa.append("j");
                 }
             }
         }
         return stringa.toString().replace(',', '.');
     }
-    
-    public double getRealPart() {
+
+    public BigDecimal getRealPart() {
         return realPart;
     }
 
-    public void setRealPart(double realPart) {
+    public void setRealPart(BigDecimal realPart) {
         this.realPart = realPart;
     }
 
-    public double getImaginaryPart() {
+    public BigDecimal getImaginaryPart() {
         return imaginaryPart;
     }
 
-    public void setImaginaryPart(double imaginaryPart) {
+    public void setImaginaryPart(BigDecimal imaginaryPart) {
         this.imaginaryPart = imaginaryPart;
     }
 
-    public double getModule() {
+    public BigDecimal getModule() {
         return module;
     }
 
-    public void setModule(double module) {
+    public void setModule(BigDecimal module) {
         this.module = module;
     }
 
-    public double getPhase() {
+    public BigDecimal getPhase() {
         return phase;
     }
 
-    public void setPhase(double phase) {
+    public void setPhase(BigDecimal phase) {
         this.phase = phase;
     }
+    
     
 }

@@ -1,5 +1,14 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.classes;
 
+import java.math.BigDecimal;
 import java.util.regex.Pattern;
 import scientificcalculator.exceptions.InvalidOperandsException;
 import scientificcalculator.exceptions.UninitializedVariableException;
@@ -101,7 +110,7 @@ public class ScientificCalculator {
     }
     
     public void divide() throws InvalidOperandsException,ArithmeticException{
-        if(stack.top().getModule()==0){
+        if(stack.top().getModule().doubleValue()==0){
             throw new ArithmeticException("Divisione per zero");
         }
         if(stack.getStack().size()<2){
@@ -113,9 +122,9 @@ public class ScientificCalculator {
     }
     
     public void squareRoot() throws InvalidOperandsException{
-        if(stack.top().getModule()==0){
+        if(stack.top().getModule().doubleValue()==0){
             stack.pop();
-            stack.push(new ComplexNumber(0,0));
+            stack.push(new ComplexNumber(BigDecimal.ZERO,BigDecimal.ZERO));
             return;
         }
         ComplexNumber radixs[];
@@ -136,18 +145,15 @@ public class ScientificCalculator {
         Pattern pattern = Pattern.compile("[-+]?\\d*\\.?\\d+[-+]\\d*\\.?\\d+j");
         if(pattern.matcher(input).matches()){
             input = input.replace("j","");
-            System.out.println(input);
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
-            return new ComplexNumber(Double.parseDouble(numbers[0]),Double.parseDouble(numbers[1]));
+            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[1]));
         }
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
-            System.out.println(input);
-            return new ComplexNumber(Double.parseDouble(input),0);
+            return new ComplexNumber(new BigDecimal(input),BigDecimal.ZERO);
         }
         input = input.replace("j","");
-        System.out.println(input);
-        return new ComplexNumber(0,Double.parseDouble(input));
+        return new ComplexNumber(BigDecimal.ZERO,new BigDecimal(input));
     } 
 
     public Stack getStack() {

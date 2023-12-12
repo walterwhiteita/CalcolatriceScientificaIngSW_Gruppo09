@@ -1,3 +1,11 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.SCinterface;
 
 import java.net.URL;
@@ -114,14 +122,12 @@ public class Controller implements Initializable {
     @FXML
     private void selectVariable(ActionEvent event) {
         ComboBox var = (ComboBox)event.getSource();
-        variabile=var.getValue().toString().charAt(1);
-        System.out.println(variabile);        
+        variabile=var.getValue().toString().charAt(1);  
     }
     @FXML
     private void selectOperation(ActionEvent event) {
         ComboBox op = (ComboBox)event.getSource();
-        operazione=op.getValue().toString().charAt(1);
-        System.out.println(operazione);        
+        operazione=op.getValue().toString().charAt(1);    
     }
     @FXML
     private void executeOperation(ActionEvent event){
@@ -157,7 +163,6 @@ public class Controller implements Initializable {
                 vBoxVariableUpdate();
             }
         }
-        System.out.println("Variabile: "+variabile+" Operazione: "+operazione);
         
     }
     private void vBoxVariableUpdate(){

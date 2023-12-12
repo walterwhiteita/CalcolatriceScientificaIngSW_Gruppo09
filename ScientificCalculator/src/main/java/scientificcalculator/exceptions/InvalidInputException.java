@@ -1,24 +1,18 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.exceptions;
 
-/**
- *
- * @author angel
- */
 public class InvalidInputException extends RuntimeException {
 
-    /**
-     * Creates a new instance of <code>InvalidInputException</code> without
-     * detail message.
-     */
     public InvalidInputException() {
     }
 
-    /**
-     * Constructs an instance of <code>InvalidInputException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
-     */
     public InvalidInputException(String msg) {
         super(msg);
     }

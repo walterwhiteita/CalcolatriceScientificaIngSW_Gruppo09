@@ -1,3 +1,11 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.SCinterface;
 
 import java.util.regex.Pattern;
@@ -13,20 +21,16 @@ public final class Checker {
         Pattern pattern = Pattern.compile("[+-]?\\d*\\.?\\d+[-+]\\d*\\.?\\d+j");
         // Match regex against input
         if(pattern.matcher(input).matches()){
-            System.out.println("Complesso");
             return true;
         }
         pattern = Pattern.compile("[+-]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
-            System.out.println("Reale");
             return true;
         }
         pattern = Pattern.compile("[+-]?\\d*\\.?\\d+j");
         if(pattern.matcher(input).matches()){
-            System.out.println("Immaginario");
             return true;
         }
-        System.out.println("No match");
         return false;
     }
     public static int checkOperation(String input){
