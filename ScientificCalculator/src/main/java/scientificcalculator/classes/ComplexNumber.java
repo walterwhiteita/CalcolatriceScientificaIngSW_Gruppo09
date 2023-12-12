@@ -39,8 +39,8 @@ public class ComplexNumber {
         BigDecimal realPart=this.realPart;
         BigDecimal imaginaryPart=this.imaginaryPart;
         
-        realPart = realPart.setScale(3, BigDecimal.ROUND_HALF_EVEN);
-        imaginaryPart = imaginaryPart.setScale(3, BigDecimal.ROUND_HALF_EVEN);
+        //realPart = realPart.setScale(3, BigDecimal.ROUND_HALF_UP);
+        //imaginaryPart = imaginaryPart.setScale(3, BigDecimal.ROUND_HALF_UP);
         
         if (realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0){
             return "0";

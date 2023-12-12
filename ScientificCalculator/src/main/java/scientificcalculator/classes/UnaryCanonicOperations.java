@@ -35,6 +35,6 @@ public final class UnaryCanonicOperations {
         return radix;
     }
     public static ComplexNumber changeSign(ComplexNumber n){
-        return new ComplexNumber((n.getRealPart().negate(MathContext.DECIMAL128)),(n.getImaginaryPart().negate(MathContext.DECIMAL128)));
+        return new ComplexNumber((n.getRealPart().negate(MathContext.UNLIMITED)),(n.getImaginaryPart().negate(MathContext.UNLIMITED)));
     }
 }

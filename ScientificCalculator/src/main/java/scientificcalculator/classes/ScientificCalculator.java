@@ -110,7 +110,7 @@ public class ScientificCalculator {
     }
     
     public void divide() throws InvalidOperandsException,ArithmeticException{
-        if(stack.top().getModule().doubleValue()==0){
+        if(stack.top().getRealPart().doubleValue()==0){
             throw new ArithmeticException("Divisione per zero");
         }
         if(stack.getStack().size()<2){
@@ -146,13 +146,21 @@ public class ScientificCalculator {
         if(pattern.matcher(input).matches()){
             input = input.replace("j","");
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
-            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[1]));
+            BigDecimal realPart = new BigDecimal(numbers[0]);
+            realPart = realPart.setScale(3,BigDecimal.ROUND_HALF_UP);
+            BigDecimal imaginaryPart = new BigDecimal(numbers[1]);
+            imaginaryPart = imaginaryPart.setScale(3,BigDecimal.ROUND_HALF_UP);
+            return new ComplexNumber(realPart,imaginaryPart);
         }
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
-            return new ComplexNumber(new BigDecimal(input),BigDecimal.ZERO);
+            BigDecimal realPart = new BigDecimal(input);
+            realPart = realPart.setScale(3,BigDecimal.ROUND_HALF_UP);
+            return new ComplexNumber(realPart,BigDecimal.ZERO);
         }
         input = input.replace("j","");
+        BigDecimal imaginaryPart = new BigDecimal(input);
+        imaginaryPart = imaginaryPart.setScale(3,BigDecimal.ROUND_HALF_UP);
         return new ComplexNumber(BigDecimal.ZERO,new BigDecimal(input));
     } 
 
