@@ -27,7 +27,7 @@ public class ComplexNumber {
         return BigDecimal.valueOf(Math.sqrt(Math.pow(realPart.doubleValue(), 2) + Math.pow(imaginaryPart.doubleValue(), 2)));
     }
     private BigDecimal phaseCalculator(){
-        if(realPart.equals(BigDecimal.ZERO) && imaginaryPart.equals(BigDecimal.ZERO)){
+        if(realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0){
             return BigDecimal.ZERO;
         }
         else{
