@@ -8,32 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author Gianmarco Uni
- */
-public class UnaryCanonicOperationsTest {
-    
-    public UnaryCanonicOperationsTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-        
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
 
+public class UnaryCanonicOperationsTest {
     /**
      * Test of squareRoot method, of class UnaryCanonicOperations.
      */
