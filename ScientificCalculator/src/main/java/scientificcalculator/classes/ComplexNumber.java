@@ -12,6 +12,7 @@ import ch.obermuhlner.math.big.BigDecimalMath;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+
 public class ComplexNumber {
     private BigDecimal realPart;
     private BigDecimal imaginaryPart;
@@ -129,5 +130,31 @@ public class ComplexNumber {
     public BigDecimal getPhase() {
         return phase;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.realPart.hashCode();
+        hash = 53 * hash + this.imaginaryPart.hashCode();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ComplexNumber other = (ComplexNumber) obj;
+        
+        return this.realPart.equals(other.realPart) && this.imaginaryPart.equals(other.imaginaryPart) ;
+    }
+    
+    
 
 }
