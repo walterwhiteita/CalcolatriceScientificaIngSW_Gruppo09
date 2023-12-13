@@ -8,33 +8,32 @@
 
 package scientificcalculator.classes;
 
-import static java.lang.Math.PI;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.sqrt;
+import ch.obermuhlner.math.big.BigDecimalMath;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
 public final class UnaryCanonicOperations {
     public static ComplexNumber[] squareRoot(ComplexNumber n){
         ComplexNumber[] radix = new ComplexNumber[2];
-        Double moduleRadix = sqrt(n.getModule().doubleValue());
-        Double phase = n.getPhase().doubleValue()/2;
-        Double phasePI = (n.getPhase().doubleValue()+2*PI)/2;
+        BigDecimal moduleRadix = BigDecimalMath.sqrt(n.getModule(), MathContext.DECIMAL128);
+        BigDecimal phase = n.getPhase().divide(BigDecimal.valueOf(2),MathContext.DECIMAL128);
+        BigDecimal phasePI = (n.getPhase().add(BigDecimal.valueOf(2).multiply(BigDecimalMath.pi(MathContext.DECIMAL128)))).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
         //Calcolo la prima radice
-        BigDecimal realPart = BigDecimal.valueOf(moduleRadix * cos(phase));
-        BigDecimal imaginaryPart = BigDecimal.valueOf(moduleRadix * sin(phase));
+        BigDecimal realPart = moduleRadix.multiply(BigDecimalMath.cos(phase, MathContext.DECIMAL128), MathContext.DECIMAL128);
+        BigDecimal imaginaryPart = moduleRadix.multiply(BigDecimalMath.sin(phase, MathContext.DECIMAL128), MathContext.DECIMAL128);
         //Inserisco il numero all'interno del vettore
         radix[0]=new ComplexNumber(realPart,imaginaryPart);
+        
         //Calcolo la seconda radice
-        realPart = BigDecimal.valueOf((moduleRadix) * cos(phasePI));
-        imaginaryPart = BigDecimal.valueOf((moduleRadix) * sin(phasePI));
+        realPart = moduleRadix.multiply(BigDecimalMath.cos(phasePI, MathContext.DECIMAL128), MathContext.DECIMAL128);
+        imaginaryPart = moduleRadix.multiply(BigDecimalMath.sin(phasePI, MathContext.DECIMAL128), MathContext.DECIMAL128);
         //Inserisco il numero all'interno del vettore
         radix[1]=new ComplexNumber(realPart,imaginaryPart);
         //Ritorno il vettore
         return radix;
     }
+
     public static ComplexNumber changeSign(ComplexNumber n){
         return new ComplexNumber((n.getRealPart().negate(MathContext.UNLIMITED)),(n.getImaginaryPart().negate(MathContext.UNLIMITED)));
-    }
+    }  
 }
