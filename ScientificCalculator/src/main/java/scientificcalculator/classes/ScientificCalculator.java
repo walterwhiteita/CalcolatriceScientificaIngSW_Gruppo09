@@ -110,7 +110,7 @@ public class ScientificCalculator {
     }
     
     public void divide() throws InvalidOperandsException,ArithmeticException{
-        if(stack.top().getRealPart().doubleValue()==0){
+        if(stack.top().getRealPart().doubleValue()==0 && stack.top().getImaginaryPart().doubleValue()==0){
             throw new ArithmeticException("Divisione per zero");
         }
         if(stack.getStack().size()<2){
@@ -146,7 +146,7 @@ public class ScientificCalculator {
         if(pattern.matcher(input).matches()){
             input = input.replace("j","");
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
-            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[0]));
+            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[1]));
         }
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){

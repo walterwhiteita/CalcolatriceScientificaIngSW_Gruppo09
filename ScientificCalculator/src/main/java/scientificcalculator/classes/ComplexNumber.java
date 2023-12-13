@@ -8,7 +8,10 @@
 
 package scientificcalculator.classes;
 
+import ch.obermuhlner.math.big.BigDecimalMath;
 import java.math.BigDecimal;
+import java.math.MathContext;
+
 
 public class ComplexNumber {
     private BigDecimal realPart;
@@ -24,14 +27,17 @@ public class ComplexNumber {
     }
     
     private BigDecimal moduleCalculator(){
-        return BigDecimal.valueOf(Math.sqrt(Math.pow(realPart.doubleValue(), 2) + Math.pow(imaginaryPart.doubleValue(), 2)));
+        BigDecimal TWO = BigDecimal.valueOf(2);
+        BigDecimal pow1 = BigDecimalMath.pow(realPart, TWO,MathContext.DECIMAL128);
+        BigDecimal pow2 = BigDecimalMath.pow(imaginaryPart, TWO,MathContext.DECIMAL128);
+        return BigDecimalMath.sqrt(pow1.add(pow2, MathContext.DECIMAL128),MathContext.DECIMAL128);
     }
     private BigDecimal phaseCalculator(){
-        if(realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0){
+        if(realPart.doubleValue() == 0 && imaginaryPart.doubleValue()== 0 ){
             return BigDecimal.ZERO;
         }
         else{
-            return BigDecimal.valueOf(Math.atan2(imaginaryPart.doubleValue(),realPart.doubleValue()));
+            return BigDecimalMath.atan2(imaginaryPart,realPart,MathContext.DECIMAL128);
         }
     }
     @Override
@@ -124,5 +130,31 @@ public class ComplexNumber {
     public BigDecimal getPhase() {
         return phase;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.realPart.hashCode();
+        hash = 53 * hash + this.imaginaryPart.hashCode();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ComplexNumber other = (ComplexNumber) obj;
+        
+        return this.realPart.equals(other.realPart) && this.imaginaryPart.equals(other.imaginaryPart) ;
+    }
+    
+    
 
 }
