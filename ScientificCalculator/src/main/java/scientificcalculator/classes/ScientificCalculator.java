@@ -146,7 +146,7 @@ public class ScientificCalculator {
         if(pattern.matcher(input).matches()){
             input = input.replace("j","");
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
-            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[0]));
+            return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[1]));
         }
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
         if(pattern.matcher(input).matches()){
