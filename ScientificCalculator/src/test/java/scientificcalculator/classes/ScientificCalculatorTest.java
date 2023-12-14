@@ -1,5 +1,6 @@
 package scientificcalculator.classes;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +11,27 @@ import scientificcalculator.exceptions.InvalidOperandsException;
  * @author antonio
  */
 public class ScientificCalculatorTest {
-    public ScientificCalculatorTest() {
+    //Test metodo getStack()
+    @Test
+    public void testGetStack() throws NoSuchFieldException, IllegalAccessException {
+        System.out.println("Test getStack()");
+        ScientificCalculator sc = new ScientificCalculator();
+        Field field = sc.getClass().getDeclaredField("stack");
+        field.setAccessible(true);
+        Stack s = new Stack();
+        field.set(sc, s);
+        assertEquals(s, sc.getStack());
+    }
+//Test metodo getVars()    
+    @Test
+    public void testGetVars() throws NoSuchFieldException, IllegalAccessException {
+        System.out.println("Test getVars()");
+        ScientificCalculator sc = new ScientificCalculator();
+        Field field = sc.getClass().getDeclaredField("vars");
+        field.setAccessible(true);
+        Vars test = new Vars(new Stack());
+        field.set(sc, test);
+        assertEquals(test, sc.getVars());
     }
     
 //Test metodo execute()
@@ -482,8 +503,8 @@ public class ScientificCalculatorTest {
         ScientificCalculator sc = new ScientificCalculator();
         Stack s = sc.getStack();
         
-        sc.insertComplexNumber("31.6238+22.729j");
-        assertEquals(new ComplexNumber(new BigDecimal("31.624"), new BigDecimal("22.729")), s.pop());
+        sc.insertComplexNumber("-31.6238-22.729j");
+        assertEquals(new ComplexNumber(new BigDecimal("-31.624"), new BigDecimal("-22.729")), s.pop());
     }
     
     @Test
@@ -604,26 +625,5 @@ public class ScientificCalculatorTest {
         
         sc.insertComplexNumber("-176j");
         assertEquals(new ComplexNumber(new BigDecimal("0.000"), new BigDecimal("-176")), s.pop());
-    }
-
-//Test metodo getStack()
-    
-    @Test
-    public void testGetStack() {
-        System.out.println("Test getStack()");
-        ScientificCalculator sc = new ScientificCalculator();
-        Stack test = new Stack();
-        assertEquals(test.getClass(), sc.getStack().getClass());
-    }
-    
-//Test metodo getVars()
-
-    @Test
-    public void testGetVars() {
-        System.out.println("getVars()");
-        ScientificCalculator sc = new ScientificCalculator();
-        Stack s = new Stack();
-        Vars test = new Vars(s);
-        assertEquals(test.getClass(), sc.getVars().getClass());
     }
 }
