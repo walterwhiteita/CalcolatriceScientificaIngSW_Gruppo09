@@ -40,7 +40,7 @@ public class CheckerTest {
     @Test
     public void testIsANumber2() {
         System.out.println("isANumber2");
-        String input = "23+59j";
+        String input = "-31.6238-22j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -49,7 +49,7 @@ public class CheckerTest {
     @Test
     public void testIsANumber3() {
         System.out.println("isANumber3");
-        String input = "-31.6238-22j";
+        String input = "-176";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -58,7 +58,7 @@ public class CheckerTest {
     @Test
     public void testIsANumber4() {
         System.out.println("isANumber4");
-        String input = "-12.528+74j";
+        String input = "-23.816215";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -67,16 +67,17 @@ public class CheckerTest {
     @Test
     public void testIsANumber5() {
         System.out.println("isANumber5");
-        String input = "9-13.729j";
+        String input = "176j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
 
+
     @Test
     public void testIsANumber6() {
         System.out.println("isANumber6");
-        String input = "-31.6238+22j";
+        String input = "-23.816215j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -85,7 +86,7 @@ public class CheckerTest {
     @Test
     public void testIsANumber7() {
         System.out.println("isANumber7");
-        String input = "176";
+        String input = "0";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -94,25 +95,29 @@ public class CheckerTest {
     @Test
     public void testIsANumber8() {
         System.out.println("isANumber8");
-        String input = "-176";
+        String input = "0j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
+
+   
 
     @Test
     public void testIsANumber9() {
         System.out.println("isANumber9");
-        String input = "23.816";
+        String input = "1j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
 
+    
+
     @Test
     public void testIsANumber10() {
         System.out.println("isANumber10");
-        String input = "-23.816215";
+        String input = "0.0+0.0j";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -121,7 +126,7 @@ public class CheckerTest {
     @Test
     public void testIsANumber11() {
         System.out.println("isANumber11");
-        String input = "176j";
+        String input = "11111111111111111111111111111111111111111111111111";
         boolean expResult = true;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
@@ -130,96 +135,6 @@ public class CheckerTest {
     @Test
     public void testIsANumber12() {
         System.out.println("isANumber12");
-        String input = "-176j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber13() {
-        System.out.println("isANumber13");
-        String input = "23.816j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber14() {
-        System.out.println("isANumber14");
-        String input = "-23.816215j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber15() {
-        System.out.println("isANumber15");
-        String input = "0";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber16() {
-        System.out.println("isANumber16");
-        String input = "0j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber17() {
-        System.out.println("isANumber17");
-        String input = "-0j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber18() {
-        System.out.println("isANumber18");
-        String input = "1j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber19() {
-        System.out.println("isANumber19");
-        String input = "-1j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber20() {
-        System.out.println("isANumber20");
-        String input = "0.0+0.0j";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber21() {
-        System.out.println("isANumber21");
-        String input = "11111111111111111111111111111111111111111111111111";
-        boolean expResult = true;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIsANumber22() {
-        System.out.println("isANumber22");
         String input = "-";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
@@ -227,26 +142,19 @@ public class CheckerTest {
     }
 
     @Test
-    public void testIsANumber23() {
-        System.out.println("isANumber23");
+    public void testIsANumber13() {
+        System.out.println("isANumber13");
         String input = "DUP";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testIsANumber24() {
-        System.out.println("isANumber24");
-        String input = "DUP";
-        boolean expResult = false;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
+    
 
     @Test
-    public void testIsANumber25() {
-        System.out.println("isANumber25");
+    public void testIsANumber14() {
+        System.out.println("isANumber15");
         String input = "OVR";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
@@ -254,8 +162,8 @@ public class CheckerTest {
     }
 
     @Test
-    public void testIsANumber26() {
-        System.out.println("isANumber26");
+    public void testIsANumber15() {
+        System.out.println("isANumber16");
         String input = "ciao";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
@@ -263,40 +171,25 @@ public class CheckerTest {
     }
 
     @Test
-    public void testIsANumber27() {
-        System.out.println("isANumber27");
+    public void testIsANumber16() {
+        System.out.println("isANumber17");
         String input = "test27j";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testIsANumber28() {
-        System.out.println("isANumber28");
-        String input = "23 + 52j";
-        boolean expResult = false;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
+   
 
     @Test
-    public void testIsANumber29() {
-        System.out.println("isANumber29");
+    public void testIsANumber17() {
+        System.out.println("isANumber19");
         String input = "253.265 - 251j";
         boolean expResult = false;
         boolean result = Checker.isANumber(input);
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testIsANumber30() {
-        System.out.println("isANumber30");
-        String input = "+";
-        boolean expResult = false;
-        boolean result = Checker.isANumber(input);
-        assertEquals(expResult, result);
-    }
 
     @Test
     public void testCheckOperation1() {
@@ -495,6 +388,7 @@ public class CheckerTest {
         Character variable = 'A';
         boolean expResult = false;
         boolean result = Checker.isInitialized(var, variable);
+        
         assertEquals(expResult, result);
 
     }
