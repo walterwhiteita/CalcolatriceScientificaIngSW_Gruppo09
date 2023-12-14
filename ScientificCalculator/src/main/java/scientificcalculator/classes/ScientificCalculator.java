@@ -17,11 +17,13 @@ public class ScientificCalculator {
     private Stack stack;
     private Vars vars;
     
+    //Costruttore della classe ScientificCalculator
     public ScientificCalculator() {
         this.stack=new Stack();
         this.vars=new Vars(this.stack);
     }
-  
+    
+    //Viene chiamato il metodo corretto in corrispondenza dell'operazione selezionata
     public void execute(int input) throws InvalidOperandsException, ArithmeticException{
         switch(input){
             case 1:
@@ -61,6 +63,7 @@ public class ScientificCalculator {
         }
     }
     
+    //Viene chiamato il metodo corretto in corrispondenza dell'operazione sulla variabile selezionata
     public void executeOnVariable(Character variable, Character operation) throws InvalidOperandsException, UninitializedVariableException{
         switch(operation){
             case '>':{
@@ -82,21 +85,33 @@ public class ScientificCalculator {
         }
     }
     
+    //Metodo che gestisce la somma
     public void sum() throws InvalidOperandsException{
+        //Nel caso in cui non siano presenti almeno 2 elementi viene sollevata l'eccezione
         if(stack.getStack().size()<2){
             throw new InvalidOperandsException("Numeri di operandi per l'addizione!");
         }
+        
+        //Prelevo i 2 elementi dallo stack, sono sicuro che siano presenti
         ComplexNumber n2 = stack.pop();
         ComplexNumber n1 = stack.pop();
+        
+        //Inserisco in testa allo stack il risultato della somma
         stack.push(BinaryCanonicOperations.sum(n1,n2));
     }
     
+    //Metodo che gestisce la sottrazione
     public void sub() throws InvalidOperandsException{
+        //Nel caso in cui non siano presenti almeno 2 elementi viene sollevata l'eccezione
         if(stack.getStack().size()<2){
             throw new InvalidOperandsException("Numeri di operandi per la sottrazione!");
         }
+        
+        //Prelevo i 2 elementi dallo stack, sono sicuro che siano presenti
         ComplexNumber n2 = stack.pop();
         ComplexNumber n1 = stack.pop();
+        
+        //Inserisco in testa allo stack il risultato della somma
         stack.push(BinaryCanonicOperations.sub(n1,n2));
     }
     
