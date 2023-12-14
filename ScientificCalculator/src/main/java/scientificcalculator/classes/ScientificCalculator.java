@@ -157,9 +157,8 @@ public class ScientificCalculator {
     public void squareRoot() throws InvalidOperandsException{
         /* Se il numero inserito è pari a 0, non ne calcolo le radici poichè è 
         esso stesso la radice.*/
-        if(stack.top().getModule().doubleValue()==0){
-            stack.pop();
-            stack.push(new ComplexNumber(BigDecimal.ZERO,BigDecimal.ZERO));
+        if(stack.top().getRealPart().doubleValue()==0 
+                && stack.top().getImaginaryPart().doubleValue()==0){
             return;
         }
         
