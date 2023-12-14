@@ -15,7 +15,7 @@ public final class BinaryCanonicOperations {
     //Metodo che effettua la somma tra due numeri complessi
     public static ComplexNumber sum(ComplexNumber n1, ComplexNumber n2){
         //Definisco il MathContext per le varie operazioni
-        MathContext mc = MathContext.DECIMAL128;
+        final MathContext mc = MathContext.DECIMAL128;
         
         //Calcolo la parte reale risultante, come somma delle due parti reali
         BigDecimal realPartResult = n1.getRealPart().add(n2.getRealPart(),mc);
@@ -31,7 +31,7 @@ public final class BinaryCanonicOperations {
     //Metodo che effettua la differenza tra due numeri complessi
     public static ComplexNumber sub(ComplexNumber n1, ComplexNumber n2){
         //Definisco il MathContext per le varie operazioni
-        MathContext mc = MathContext.DECIMAL128;
+        final MathContext mc = MathContext.DECIMAL128;
         
         //Calcolo la parte reale risultante, come differenza delle due parti reali
         BigDecimal realPartResult = n1.getRealPart().subtract(n2.getRealPart(),mc);
@@ -46,7 +46,7 @@ public final class BinaryCanonicOperations {
     //Metodo che effettua la moltiplicazione tra due numeri complessi
     public static ComplexNumber multiply(ComplexNumber n1, ComplexNumber n2){
         //Definisco il MathContext per le varie operazioni
-        MathContext mc = MathContext.DECIMAL128;
+        final MathContext mc = MathContext.DECIMAL128;
         
         //Calcolo il prodotto delle parti reali dei due numeri
         BigDecimal prodReal = n1.getRealPart().multiply(n2.getRealPart(), mc);
@@ -71,7 +71,7 @@ public final class BinaryCanonicOperations {
     //Metodo che effettua la differenza tra due numeri complessi
     public static ComplexNumber divide(ComplexNumber n1, ComplexNumber n2){
         //Definisco il MathContext per le varie operazioni
-        MathContext mc = MathContext.DECIMAL128;
+        final MathContext mc = MathContext.DECIMAL128;
         
         //Calcolo il prodotto delle parti reali dei due numeri
         BigDecimal prodReal = n1.getRealPart().multiply(n2.getRealPart(), mc);

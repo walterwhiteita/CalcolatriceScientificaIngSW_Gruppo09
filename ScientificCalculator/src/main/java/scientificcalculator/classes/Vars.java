@@ -45,6 +45,7 @@ public class Vars {
         non ancora inizializzata.
     */
     public void pushInStack(Character variable) throws UninitializedVariableException{
+        //Verifica che la chiave 'variable' sia presente nella map.
         if(!this.variables.containsKey(variable))
             throw new UninitializedVariableException("Variabile selezionata non inizializzata!");
         
@@ -58,7 +59,9 @@ public class Vars {
         un'eccezione nel momento in cui la variabile passata come argomento
         dovesse risultare ancora non inizializzata.
     */
-    public void sumFromStack(Character variable) throws InvalidOperandsException, UninitializedVariableException{
+    public void sumFromStack(Character variable) throws 
+            InvalidOperandsException, UninitializedVariableException{
+        //Verifica che la chiave 'variable' sia presente nella map.
         if(!this.variables.containsKey(variable))
             throw new UninitializedVariableException("Variabile selezionata non inizializzata!");
         
@@ -75,8 +78,10 @@ public class Vars {
         un'eccezione nel momento in cui la variabile passata come argomento
         dovesse risultare ancora non inizializzata.
     */
-    public void subFromStack(Character variable) throws InvalidOperandsException, UninitializedVariableException{
-        if(!this.variables.containsKey(variable)) //Verifica che la chiave 'variable' sia presente nella map.
+    public void subFromStack(Character variable) throws 
+            InvalidOperandsException, UninitializedVariableException{
+        //Verifica che la chiave 'variable' sia presente nella map.
+        if(!this.variables.containsKey(variable)) 
             throw new UninitializedVariableException("Variabile selezionata non inizializzata!");
         
         ComplexNumber num2 = this.stack.pop();
@@ -109,15 +114,9 @@ public class Vars {
     }
     
     /*
-        Metodo che restituisce il reference all'oggetto di tipo Stack 'stack'.
-    */
-    public Stack getStack() {
-        return stack;
-    }
-    
-    /*
-        Metodo che resstituisce sotto forma di ArrayList<String> la HashMap definita in questa classe.
-        Utile a costruire la schermata di visualizzazione delle variabili allocate.
+        Metodo che restituisce sotto forma di ArrayList<String> la HashMap,
+        definita in questa classe. Utile a costruire la schermata di visualizzazione 
+        delle variabili allocate.
     */
     public ArrayList<String> toStringArrayList() {
         ArrayList<String> out = new ArrayList<>();
@@ -131,4 +130,8 @@ public class Vars {
         }
         return out;
     }
+    
+    public Stack getStack() {
+        return stack;
+    } 
 }

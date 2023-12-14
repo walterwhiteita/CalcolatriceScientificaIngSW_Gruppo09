@@ -9,10 +9,10 @@
 package scientificcalculator.exceptions;
 
 public class InvalidOperandsException extends RuntimeException {
-
+    //Costruttore per InvalidOperandsException
     public InvalidOperandsException() {
     }
-
+    //Costruttore per InvalidOperandsException a cui viene passata una String
     public InvalidOperandsException(String msg) {
         super(msg);
     }

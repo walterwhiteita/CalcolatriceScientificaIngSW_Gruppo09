@@ -111,63 +111,121 @@ public class ScientificCalculator {
         ComplexNumber n2 = stack.pop();
         ComplexNumber n1 = stack.pop();
         
-        //Inserisco in testa allo stack il risultato della somma
+        //Inserisco in testa allo stack il risultato della sottrazione
         stack.push(BinaryCanonicOperations.sub(n1,n2));
     }
     
+    //Metodo che gestisce la moltiplicazione
     public void multiply() throws InvalidOperandsException{
+        //Nel caso in cui non siano presenti almeno 2 elementi viene sollevata l'eccezione
         if(stack.getStack().size()<2){
             throw new InvalidOperandsException("Numeri di operandi per la moltiplicazione!");
         }
+        
+        //Prelevo i 2 elementi dallo stack, sono sicuro che siano presenti
         ComplexNumber n2 = stack.pop();
         ComplexNumber n1 = stack.pop();
+        
+        //Inserisco in testa allo stack il risultato della moltiplicazione
         stack.push(BinaryCanonicOperations.multiply(n1,n2));
     }
     
+    //Metodo che gestisce la divisione
     public void divide() throws InvalidOperandsException,ArithmeticException{
-        if(stack.top().getRealPart().doubleValue()==0 && stack.top().getImaginaryPart().doubleValue()==0){
+        /*Se il numero è pari a zero, viene sollevata un'ArithmeticException,
+        per permettere all'interfaccia di notificare all'utente che la divisione
+        per zero non è possibile*/
+        if(stack.top().getRealPart().doubleValue()==0 
+                && stack.top().getImaginaryPart().doubleValue()==0){
             throw new ArithmeticException("Divisione per zero");
         }
+        
+        //Nel caso in cui non siano presenti almeno 2 elementi viene sollevata l'eccezione
         if(stack.getStack().size()<2){
             throw new InvalidOperandsException("Numero di operandi insufficiente per la divisione!");
         }
+        
+        //Prelevo i 2 elementi dallo stack, sono sicuro che siano presenti
         ComplexNumber n2 = stack.pop();
         ComplexNumber n1 = stack.pop();
+        
+        //Inserisco in testa allo stack il risultato della divisione
         stack.push(BinaryCanonicOperations.divide(n1,n2));
     }
     
+    //Metodo che gestisce la radice quadrata
     public void squareRoot() throws InvalidOperandsException{
+        /* Se il numero inserito è pari a 0, non ne calcolo le radici poichè è 
+        esso stesso la radice.*/
         if(stack.top().getModule().doubleValue()==0){
             stack.pop();
             stack.push(new ComplexNumber(BigDecimal.ZERO,BigDecimal.ZERO));
             return;
         }
+        
+        //Alloco il vettore per salvare i valori delle radici
         ComplexNumber radixs[];
+        
+        /*Calcolo le radici. Nel caso in cui non sia presente almeno un numero 
+        all'interno dello stack, il metodo pop lancia un'eccezione che viene 
+        rilanciata fino al controller che la gestisce.*/
         radixs = UnaryCanonicOperations.squareRoot(stack.pop());
+        
+        //Inserisco i risultati delle radici all'interno dello stack
         stack.push(radixs[0]);
         stack.push(radixs[1]);
     }
     
+    //Metodo che gestisce l'operazione di cambio segno
     public void changeSign() throws InvalidOperandsException{
+        /*Effettuo il cambio segno. Nel caso in cui non sia presente almeno un numero 
+        all'interno dello stack, il metodo pop lancia un'eccezione che viene 
+        rilanciata fino al controller che la gestisce.*/
         stack.push(UnaryCanonicOperations.changeSign(stack.pop()));
     }
     
+    //Metodo che inserisce nello stack un ComplexNumber
     public void insertComplexNumber(String input){
+        //Inserisco nello stack il ComplexNumber generato dalla formatComplexNumber
         stack.push(formatComplexNumber(input));
     }
     
+    
     private ComplexNumber formatComplexNumber(String input){
+        //Creo il pattern per i numeri nella forma ±Re±Imj.
         Pattern pattern = Pattern.compile("[-+]?\\d*\\.?\\d+[-+]\\d*\\.?\\d+j");
+        
+        //Se l'input corrisponde al pattern è un numero con parte reale e immaginaria
         if(pattern.matcher(input).matches()){
+            //Rimuovo la lettra j dalla stringa, prima di lavorarla
             input = input.replace("j","");
+            
+            /*Ottengo un vettore di stringhe, dove in prima posizione vi può essere
+            un numero senza segno, mentre nelle successive posizioni la presenza
+            del segno è obbligatoria.*/
             String[] numbers = input.split("(?<=\\d)(?=[+-])");
+            
+            //Restituisco il numero complesso
             return new ComplexNumber(new BigDecimal(numbers[0]),new BigDecimal(numbers[1]));
         }
+        //Creo il pattern per i numeri nella forma ±Re
         pattern = Pattern.compile("[-+]?\\d*\\.?\\d+");
+        
+        //Se l'input corrisponde al pattern è un numero a sola parte reale
         if(pattern.matcher(input).matches()){
+            
+            //Restituisco il numero complesso
             return new ComplexNumber(new BigDecimal(input),BigDecimal.ZERO);
         }
+        
+        /*Poichè l'input viene controllato dalla classe controller, e questo metodo
+        viene chiamato solo se l'input è un numero, non essendo entrato in nessuno
+        degli if sono sicuro che il numero abbia solo parte immaginaria.*/
+        
+        //Rimuovo la lettera j dalla stringa, prima di lavorla
         input = input.replace("j","");
+        
+        //Restituisco il numero complesso
         return new ComplexNumber(BigDecimal.ZERO,new BigDecimal(input));
     } 
 
