@@ -19,9 +19,6 @@ public class VarsTest {
         System.out.println("getStack");
         Stack expResult = new Stack();
         Vars instance = new Vars(expResult);
-        Field field = instance.getClass().getDeclaredField("stack");
-        field.setAccessible(true);
-        field.set(instance, expResult);
         Stack result = instance.getStack();
         assertEquals(expResult, result);
     }
