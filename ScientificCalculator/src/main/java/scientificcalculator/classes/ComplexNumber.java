@@ -33,7 +33,7 @@ public class ComplexNumber {
         return BigDecimalMath.sqrt(pow1.add(pow2, MathContext.DECIMAL128),MathContext.DECIMAL128);
     }
     private BigDecimal phaseCalculator(){
-        if(realPart.doubleValue() == 0 && imaginaryPart.doubleValue()== 0 ){
+        if(realPart.doubleValue() == 0 && imaginaryPart.doubleValue() == 0 ){
             return BigDecimal.ZERO;
         }
         else{
@@ -131,29 +131,7 @@ public class ComplexNumber {
         return phase;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + this.realPart.hashCode();
-        hash = 53 * hash + this.imaginaryPart.hashCode();
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ComplexNumber other = (ComplexNumber) obj;
-        
-        return this.realPart.equals(other.realPart) && this.imaginaryPart.equals(other.imaginaryPart) ;
-    }
+    
     
     
 
