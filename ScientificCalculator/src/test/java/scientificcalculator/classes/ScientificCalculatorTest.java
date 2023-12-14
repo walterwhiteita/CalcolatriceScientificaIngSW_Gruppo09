@@ -1,5 +1,6 @@
 package scientificcalculator.classes;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -609,21 +610,27 @@ public class ScientificCalculatorTest {
 //Test metodo getStack()
     
     @Test
-    public void testGetStack() {
+    public void testGetStack() throws NoSuchFieldException, IllegalAccessException {
         System.out.println("Test getStack()");
         ScientificCalculator sc = new ScientificCalculator();
-        Stack test = new Stack();
-        assertEquals(test.getClass(), sc.getStack().getClass());
+        Field field = sc.getClass().getDeclaredField("stack");
+        field.setAccessible(true);
+        Stack testGet = new Stack();
+        field.set(sc, testGet);
+        assertEquals(testGet, sc.getStack());
     }
     
 //Test metodo getVars()
 
     @Test
-    public void testGetVars() {
+    public void testGetVars() throws NoSuchFieldException, IllegalAccessException {
         System.out.println("getVars()");
         ScientificCalculator sc = new ScientificCalculator();
+        Field field = sc.getClass().getDeclaredField("vars");
+        field.setAccessible(true);
         Stack s = new Stack();
-        Vars test = new Vars(s);
-        assertEquals(test.getClass(), sc.getVars().getClass());
+        Vars testGet = new Vars(s);
+        field.set(sc, testGet);
+        assertEquals(testGet, sc.getVars());
     }
 }
