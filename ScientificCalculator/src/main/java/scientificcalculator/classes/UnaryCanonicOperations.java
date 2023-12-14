@@ -14,19 +14,20 @@ import java.math.MathContext;
 
 public final class UnaryCanonicOperations {
     public static ComplexNumber[] squareRoot(ComplexNumber n){
+        final MathContext mc = MathContext.DECIMAL128;
         ComplexNumber[] radix = new ComplexNumber[2];
-        BigDecimal moduleRadix = BigDecimalMath.sqrt(n.getModule(), MathContext.DECIMAL128);
-        BigDecimal phase = n.getPhase().divide(BigDecimal.valueOf(2),MathContext.DECIMAL128);
-        BigDecimal phasePI = (n.getPhase().add(BigDecimal.valueOf(2).multiply(BigDecimalMath.pi(MathContext.DECIMAL128)))).divide(BigDecimal.valueOf(2), MathContext.DECIMAL128);
+        
+        BigDecimal moduleRadix = BigDecimalMath.sqrt(n.getModule(), mc);
+        BigDecimal phase = n.getPhase().divide(BigDecimal.valueOf(2),mc);
         //Calcolo la prima radice
-        BigDecimal realPart = moduleRadix.multiply(BigDecimalMath.cos(phase, MathContext.DECIMAL128), MathContext.DECIMAL128);
-        BigDecimal imaginaryPart = moduleRadix.multiply(BigDecimalMath.sin(phase, MathContext.DECIMAL128), MathContext.DECIMAL128);
+        BigDecimal realPart = moduleRadix.multiply(BigDecimalMath.cos(phase, mc), mc);
+        BigDecimal imaginaryPart = moduleRadix.multiply(BigDecimalMath.sin(phase, mc), mc);
         //Inserisco il numero all'interno del vettore
         radix[0]=new ComplexNumber(realPart,imaginaryPart);
         
         //Calcolo la seconda radice
-        realPart = moduleRadix.multiply(BigDecimalMath.cos(phasePI, MathContext.DECIMAL128), MathContext.DECIMAL128);
-        imaginaryPart = moduleRadix.multiply(BigDecimalMath.sin(phasePI, MathContext.DECIMAL128), MathContext.DECIMAL128);
+        realPart = realPart.negate();
+        imaginaryPart = imaginaryPart.negate();
         //Inserisco il numero all'interno del vettore
         radix[1]=new ComplexNumber(realPart,imaginaryPart);
         //Ritorno il vettore
@@ -34,6 +35,7 @@ public final class UnaryCanonicOperations {
     }
 
     public static ComplexNumber changeSign(ComplexNumber n){
-        return new ComplexNumber((n.getRealPart().negate(MathContext.UNLIMITED)),(n.getImaginaryPart().negate(MathContext.UNLIMITED)));
+        return new ComplexNumber((n.getRealPart().negate(MathContext.DECIMAL128)),
+                (n.getImaginaryPart().negate(MathContext.DECIMAL128)));
     }  
 }

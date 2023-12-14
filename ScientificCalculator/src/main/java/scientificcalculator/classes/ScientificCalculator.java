@@ -125,7 +125,7 @@ public class ScientificCalculator {
     }
     
     public void divide() throws InvalidOperandsException,ArithmeticException{
-        if(stack.top().getRealPart().doubleValue()==0){
+        if(stack.top().getRealPart().doubleValue()==0 && stack.top().getImaginaryPart().doubleValue()==0){
             throw new ArithmeticException("Divisione per zero");
         }
         if(stack.getStack().size()<2){

@@ -12,6 +12,7 @@ import ch.obermuhlner.math.big.BigDecimalMath;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+
 public class ComplexNumber {
     private BigDecimal realPart;
     private BigDecimal imaginaryPart;
@@ -196,5 +197,9 @@ public class ComplexNumber {
     public BigDecimal getPhase() {
         return phase;
     }
+
+    
+    
+    
 
 }
