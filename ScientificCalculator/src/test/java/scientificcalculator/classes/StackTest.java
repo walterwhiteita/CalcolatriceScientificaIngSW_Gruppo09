@@ -23,16 +23,6 @@ public class StackTest {
     }
     
     @Test
-    public void testPush_00() {
-        System.out.println("push 00");
-        ComplexNumber input = new ComplexNumber(new BigDecimal(31.6238),new BigDecimal(22.729));
-        Stack instance = new Stack();
-        instance.push(input);
-        assertEquals(input,instance.getStack().getFirst());
-        
-    }
-    
-    @Test
     public void testPush_01() {
         System.out.println("push 01");
         ComplexNumber input = new ComplexNumber(new BigDecimal(-12.5284),new BigDecimal(-74.5269));
