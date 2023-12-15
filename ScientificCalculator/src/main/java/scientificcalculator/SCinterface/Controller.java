@@ -156,21 +156,25 @@ public class Controller implements Initializable {
     //Metodo che fa comparire il tastierino numerico e i tasti operazione
     @FXML
     private void backFromVariable() {
-       insertNumberAnchor.setVisible(true);
+        insertNumberAnchor.setVisible(true);
+        comboBoxVariable.setValue(null);
+        comboBoxOperation.setValue(null);
     }
     
     //Viene salvata in memoria la variabile selezionata nella ComboBox
     @FXML
     private void selectVariable(ActionEvent event) {
         ComboBox var = (ComboBox)event.getSource();
-        variable=var.getValue().toString().charAt(1);  
+        if(var.getValue()!=null)
+            variable=var.getValue().toString().charAt(1);  
     }
     
     //Viene salvata in memoria l'operazione selezionata nella ComboBox
     @FXML
     private void selectOperation(ActionEvent event) {
         ComboBox op = (ComboBox)event.getSource();
-        operation=op.getValue().toString().charAt(1);    
+        if(op.getValue()!=null)
+            operation=op.getValue().toString().charAt(1);    
     }
     
     //Metodo che gestisce le operazioni sulle variabili chiamando i metodi appropriati
@@ -190,6 +194,8 @@ public class Controller implements Initializable {
             a.setResizable(true);
             a.showAndWait();
             conferma = a.getResult().getText();
+            comboBoxVariable.setValue(null);
+            comboBoxOperation.setValue(null);
         }
         /*Nel caso in cui l'utente ha confermato l'operazione o la variabile non
         è inizializzata procedo ad eseguire l'operazione*/
@@ -229,7 +235,8 @@ public class Controller implements Initializable {
             finally{
                 /*Per evitare incongruenze tra le strutture dati e l'interfaccia grafica,
                 vengono comunque chiamati i metodi per aggiornare le loro visualizzazioni*/
-                
+                comboBoxVariable.setValue(null);
+                comboBoxOperation.setValue(null);
                 vBoxStackUpdate();
                 vBoxVariableUpdate();
             }
