@@ -1,0 +1,179 @@
+@startuml Class_Diagram_Gruppo09
+scale 2811 height
+scale 4000 width
+package classes {
+    class ComplexNumber {
+        -- attributi --
+        - BigDecimal realPart
+        - BigDecimal imaginaryPart
+        - BigDecimal module
+        - BigDecimal phase
+
+        -- metodi --
+        + ComplexNumber(BigDecimal realPart, BigDecimal imaginaryPart) : <<constructor>>
+        - BigDecimal moduleCalculator()
+        - BigDecimal phaseCalculator()
+        + String toString()
+        + int hashCode()
+        + boolean equals(Object o)
+    }
+
+    class BinaryCanonicOperations <<final>> {
+        -- metodi statici --
+        + {static} ComplexNumber sum(ComplexNumber n1, ComplexNumber n2)
+        + {static} ComplexNumber sub(ComplexNumber n1, ComplexNumber n2)
+        + {static} ComplexNumber multiply(ComplexNumber n1, ComplexNumber n2)
+        + {static} ComplexNumber divide(ComplexNumber n1, ComplexNumber n2)
+    }
+
+     class  UnaryCanonicOperations <<final>>{
+        -- metodi statici --
+        + {static} ComplexNumber[] squareRoot(ComplexNumber n)
+        + {static} ComplexNumber changeSign(ComplexNumber n)
+    }
+
+    class Stack {
+        -- attributi --
+        - Deque<ComplexNumber> stack
+
+        -- metodi --
+        + Stack() : <<constructor>>
+        + void push(ComplexNumber input)
+        + ComplexNumber pop()
+        + ComplexNumber top()
+        + void clear()
+        + void drop()
+        + void swap()
+        + void duplicate()
+        + void over()
+    }
+
+    class Vars {
+        -- attributi --
+        - Map<Character, ComplexNumber> variables
+        - Stack stack
+
+        -- metodi --
+        + Vars(Stack stack) : <<constructor>>
+        + void popFromStack(Character variable)
+        + void pushInStack(Character variable)
+        + void sumFromStack(Character variable)
+        + void subFromStack(Character variable)
+        + ComplexNumber getValueOf(Character variable)
+        + void setValueOf(Character variable, ComplexNumber n)
+        + ArrayList<String> toStringArrayList()
+    }
+
+    class ScientificCalculator{
+    -- attributi --
+    - Stack stack
+    - Vars vars
+
+    --metodi--
+    + ScientificCalculator() : <<constructor>>
+    + void execute(int input)
+    + void executeOnVariable(Character variable, Character operation)
+    + void sum()
+    + void sub()
+    + void multiply()
+    + void divide()
+    + void squareRoot()
+    + void changeSign()
+    + void insertComplexNumber(String input)
+    - ComplexNumber formatComplexNumber(String input)
+    }
+}
+package exceptions{
+
+    class InvalidOperandsException{
+        -- metodi --
+        + InvalidOperandsException() : <<constructor>>
+        + InvalidOperandsException(String msg) : <<constructor>> 
+    }
+
+    class InvalidInputException extends RuntimeException{
+        -- metodi --
+        + InvalidInputException() : <<constructor>>
+        + InvalidInputException(String msg) : <<constructor>>
+    }
+
+    class UninitializedVariableException extends RuntimeException {
+        --metodi--
+        + UninitializedVariableException() : <<constructor>>
+        + UninitializedVariableException(String msg) : <<constructor>>
+    }
+} 
+
+package SCinterface{
+
+    class Checker <<final>> {
+        -- metodi statici --
+        + {static} void checkInput(String input)
+        + {static} boolean isANumber(String input)
+        + {static} int checkOperation(String input)
+        + {static} boolean isInitialized(Vars var, Character variable)   
+    }
+
+    interface Initializable {
+        + {abstract} initialize (URL url, ResourceBundle rb)
+    }
+
+
+    class Controller implements Initializable {
+        --attributi--
+        - Alert a : <<final>>
+        - TextField text
+        - Button buttonInvio
+        - Button buttonConferma        
+        - ComboBox comboBoxVariable
+        - ComboBox comboBoxOperation
+        - VBox vBoxVariable
+        - VBox vBoxStack
+        - AnchorPane insertNumberAnchor
+        - ScientificCalculator calculator : <<final>>
+        - Character variable
+        - Character operation
+
+
+        --metodi--
+        - void handleInvio(ActionEvent event)
+        - void inputFromUI(ActionEvent event)
+        - void inputFromUIWithClear(ActionEvent event)
+        - void delete(ActionEvent event)
+        - void handleKeyPressed(KeyEvent ke)
+        - void handleVariable()
+        - void backFromVariable()
+        - void selectVariable(ActionEvent event)
+        - void selectOperation(ActionEvent event)
+        - void executeOperationOnVariable(ActionEvent event)
+        - void vBoxVariableUpdate()
+        - void vBoxStackUpdate()
+        - Label generateLabel(String stringa)
+        + void initialize(URL url, ResourceBundle rb)
+    }
+    class MainClass extends Application{
+        -- metodi --
+        + void start(Stage stage)
+        -- metodi statici --
+        + {static} void main(String[] args)
+    }
+    class Application {
+        + {abstract} void start(Stage stage)
+    }
+}
+
+BinaryCanonicOperations .left.> ComplexNumber
+UnaryCanonicOperations .left.> ComplexNumber
+Vars o-- "1" Stack: stack
+ScientificCalculator *-left- "1" Vars: vars
+ScientificCalculator *-down- "1" Stack: stack
+Controller ..> Checker
+Controller *-right- "1" ScientificCalculator: calculator
+Vars .left.> ComplexNumber
+Stack .left.> ComplexNumber
+MainClass .right.> Controller
+InvalidOperandsException --down|> RuntimeException
+ScientificCalculator .up.> UnaryCanonicOperations
+ScientificCalculator .up.> BinaryCanonicOperations
+Vars .up.> BinaryCanonicOperations
+@enduml
