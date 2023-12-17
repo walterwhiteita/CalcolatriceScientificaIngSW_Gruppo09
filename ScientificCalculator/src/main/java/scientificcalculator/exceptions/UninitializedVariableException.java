@@ -1,24 +1,18 @@
+/*
+    GRUPPO 09
+    GIANMARCO GUERRIERO
+    ANGELO DI MIERI
+    BIAGIO DE MARTINO
+    ANTONIO CARBONE
+*/
+
 package scientificcalculator.exceptions;
 
-/**
- *
- * @author angel
- */
 public class UninitializedVariableException extends RuntimeException {
-
-    /**
-     * Creates a new instance of <code>UninitializedVariableException</code>
-     * without detail message.
-     */
+    //Costruttore per UninitializedVariableException
     public UninitializedVariableException() {
     }
-
-    /**
-     * Constructs an instance of <code>UninitializedVariableException</code>
-     * with the specified detail message.
-     *
-     * @param msg the detail message.
-     */
+    //Costruttore per UninitializedVariableException a cui viene passa una String
     public UninitializedVariableException(String msg) {
         super(msg);
     }
